@@ -1,13 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:test_1/functions/common_functions.dart';
 import 'package:test_1/functions/db_functions.dart';
 import 'package:test_1/functions/edit_functions.dart';
 import 'package:test_1/functions/image_functions.dart';
-import 'package:test_1/model/student_model.dart';
 import 'package:test_1/widget/appbar.dart';
 import 'package:test_1/widget/textfields.dart';
 
@@ -26,7 +24,7 @@ class EditStudent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppbar(context, 'Edit Student'),
-      body: Container(
+      body: SizedBox(
           height: double.infinity,
           width: double.infinity,
           child: TextFieldWidget(
@@ -36,16 +34,7 @@ class EditStudent extends StatelessWidget {
             nameController: editController.nameController.value,
             phoneController: editController.phoneController.value,
             batchController: editController.batchController.value,
-          )
-          // TextFieldWidget(
-          //   formkey: keyedit,
-          //   imageController: imageController,
-          //   isFromEdit: true,
-          //   nameController: editController.nameController.value,
-          //   phoneController: editController.phoneController.value,
-          //   batchController: editController.batchController.value,
-          // ),
-          ),
+          )),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           update(
@@ -58,8 +47,6 @@ class EditStudent extends StatelessWidget {
             imageController,
             editController,
           );
-          // EditStudent();
-          // EditStudent();
           log('message');
         },
         label: const Text(

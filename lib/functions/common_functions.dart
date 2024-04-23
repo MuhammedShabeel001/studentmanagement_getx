@@ -29,12 +29,7 @@ Future<void> addstudent(
     );
 
     await Get.find<StudentModelController>().addStudent(studentValues);
-    // nameController.text = '';
-    // phoneController.text = '';
-    // batchController.text = '';
-    // imageController.istrue.value = false;
     Get.back();
-
 
     log('summitted');
     snackbar('Summitted');
@@ -71,11 +66,13 @@ Future<void> update(ctx, id, namecontroller, phonecontroller, batchcontroller,
 pickimages(ImageController imageController) {
   Get.defaultDialog(
       title: 'Alert',
-      titleStyle: const TextStyle(fontSize: 19, fontWeight: FontWeight.w400, color: Colors.white),
+      titleStyle: const TextStyle(
+          fontSize: 19, fontWeight: FontWeight.w400, color: Colors.white),
       backgroundColor: Colors.purple.shade500,
       content: const Text(
         'Photo options',
-        style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 16),
+        style:
+            TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 16),
       ),
       actions: [
         ElevatedButton(

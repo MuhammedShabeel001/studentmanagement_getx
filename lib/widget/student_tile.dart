@@ -2,13 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:test_1/functions/db_functions.dart';
 import 'package:test_1/functions/edit_functions.dart';
 import 'package:test_1/model/student_model.dart';
 import 'package:test_1/view/edit_student.dart';
-import 'package:test_1/view/home_page.dart';
-import 'package:test_1/view/show_details.dart';
 import 'package:test_1/widget/snakbar.dart';
 
 // ignore: must_be_immutable
@@ -20,7 +17,6 @@ class StudentListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ListView.separated(
         itemBuilder: (context, index) {
           final data = reversedList[index];
@@ -30,9 +26,7 @@ class StudentListView extends StatelessWidget {
                   color: Colors.purple.shade100,
                   borderRadius: BorderRadius.circular(13)),
               child: ListTile(
-                onTap: () {
-                  // Get.toNamed('/showDetails');
-                },
+                onTap: () {},
                 contentPadding: const EdgeInsets.only(left: 12),
                 leading: CircleAvatar(
                   radius: 40,
@@ -56,10 +50,14 @@ class StudentListView extends StatelessWidget {
                           Get.defaultDialog(
                               title: 'Alert',
                               titleStyle: const TextStyle(
-                                  fontSize: 19, fontWeight: FontWeight.w400,color: Colors.white),
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white),
                               content: const Text(
                                 'Do you want to delete ?',
-                                style: TextStyle(fontSize: 15,color: Color.fromARGB(255, 255, 255, 255)),
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    color: Color.fromARGB(255, 255, 255, 255)),
                               ),
                               backgroundColor: Colors.purple.shade500,
                               actions: [
@@ -68,7 +66,9 @@ class StudentListView extends StatelessWidget {
                                       Get.back();
                                     },
                                     child: const Text('No',
-                                        style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)))),
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 255, 255, 255)))),
                                 TextButton(
                                     onPressed: () async {
                                       await controller.deleteStudent(data.id!);
@@ -78,7 +78,9 @@ class StudentListView extends StatelessWidget {
                                     },
                                     child: const Text(
                                       'Yes',
-                                      style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                                      style: TextStyle(
+                                          color: Color.fromARGB(
+                                              255, 255, 255, 255)),
                                     )),
                               ]);
                         },
@@ -87,7 +89,7 @@ class StudentListView extends StatelessWidget {
                 ),
               ));
         },
-        separatorBuilder: (context, index) => SizedBox(
+        separatorBuilder: (context, index) => const SizedBox(
               height: 3,
             ),
         itemCount: controller.students.length);
