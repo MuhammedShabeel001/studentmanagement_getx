@@ -6,6 +6,7 @@ import 'package:test_1/functions/db_functions.dart';
 import 'package:test_1/functions/edit_functions.dart';
 import 'package:test_1/model/student_model.dart';
 import 'package:test_1/view/edit_student.dart';
+import 'package:test_1/widget/student_detailes.dart';
 import 'package:test_1/widget/snakbar.dart';
 
 // ignore: must_be_immutable
@@ -26,13 +27,15 @@ class StudentListView extends StatelessWidget {
                   color: Colors.purple.shade100,
                   borderRadius: BorderRadius.circular(13)),
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.to(Details(studentdetails: data));
+                },
                 contentPadding: const EdgeInsets.only(left: 12),
                 leading: CircleAvatar(
                   radius: 40,
                   backgroundImage: FileImage(File(data.image)),
                 ),
-                title: Text('Name : ${data.name}'),
+                title: Text('Name : ${data.name}',style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20),maxLines: 1,overflow: TextOverflow.ellipsis,),
                 subtitle: Text('Batch : ${data.batch}'),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,

@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_1/functions/db_functions.dart';
 import 'package:test_1/model/student_model.dart';
-import 'package:test_1/widget/appbar.dart';
+import 'package:test_1/view/search_student.dart';
 import 'package:test_1/widget/student_tile.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,10 +12,30 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<StudentModelController>().getAllStudent();
     return Scaffold(
-        appBar: myAppbar(context, 'Students'),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.purple.shade300,
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                showSearch(context: context, delegate: Search());
+              },
+              icon: const Icon(
+                Icons.search,
+                size: 30,
+                color: Colors.white,
+              ),
+            )
+          ],
+          title: const Text(
+            'Students',
+            style:  TextStyle(
+                fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // log(Studentmo);
             Get.toNamed('/addStudent');
           },
           backgroundColor: Colors.purple.shade300,
@@ -28,13 +47,13 @@ class HomeScreen extends StatelessWidget {
         body: SizedBox(
           height: double.infinity,
           width: double.infinity,
-          // color: Colors.amber,
           child: GetBuilder(
             init: StudentModelController(),
             builder: (controller) {
               final values = controller.students;
               List<StudentModel> reversedList = values.reversed.toList();
-              return StudentListView(reversedList: reversedList, controller: controller);
+              return StudentListView(
+                  reversedList: reversedList, controller: controller);
             },
           ),
         ));
