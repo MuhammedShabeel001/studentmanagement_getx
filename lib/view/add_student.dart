@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:test_1/functions/common_functions.dart';
 import 'package:test_1/functions/image_functions.dart';
 import 'package:test_1/widget/appbar.dart';
 import 'package:test_1/widget/textfields.dart';
@@ -27,31 +24,6 @@ class AddStudent extends StatelessWidget {
         nameController: nameController,
         phoneController: phoneController,
         batchController: batchController,
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          addstudent(
-            nameController,
-            phoneController,
-            batchController,
-            imageController,
-            formkey,
-          );
-          log('message');
-        },
-        label: const Text(
-          'Done',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        icon: const Icon(
-          Icons.done,
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.green,
       ),
     );
   }

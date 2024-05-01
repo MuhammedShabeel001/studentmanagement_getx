@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test_1/functions/common_functions.dart';
 import 'package:test_1/functions/db_functions.dart';
 import 'package:test_1/functions/edit_functions.dart';
 import 'package:test_1/functions/image_functions.dart';
@@ -24,44 +21,14 @@ class EditStudent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: myAppbar(context, 'Edit Student'),
-      body: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: TextFieldWidget(
-            formkey: keyedit,
-            imageController: imageController,
-            isFromEdit: false,
-            nameController: editController.nameController.value,
-            phoneController: editController.phoneController.value,
-            batchController: editController.batchController.value,
-          )),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          update(
-            context,
-            editController.id.value,
-            editController.nameController.value,
-            editController.phoneController.value,
-            editController.batchController.value,
-            keyedit,
-            imageController,
-            editController,
-          );
-          log('message');
-        },
-        label: const Text(
-          'Done',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        icon: const Icon(
-          Icons.done,
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.green,
+      body: TextFieldWidget(
+        editController: editController,
+        formkey: keyedit,
+        imageController: imageController,
+        isFromEdit: true,
+        nameController: editController.nameController.value,
+        phoneController: editController.phoneController.value,
+        batchController: editController.batchController.value,
       ),
     );
   }
